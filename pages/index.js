@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "@/components/Header";
 import { getSession } from "next-auth/react";
+import Login from "@/components/Login";
 const index = ({ session }) => {
+  if (!session) return <Login />;
   return (
     <div>
       <Header />
