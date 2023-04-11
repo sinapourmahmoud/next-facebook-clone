@@ -17,9 +17,11 @@ import {
 
 //component
 import HeaderLogo from "./HeaderLogo";
+import { signOut, useSession } from "next-auth/react";
 //var
 let optionBarIconStyles = `hidden md:flex items-center cursor-pointer justify-center p-2 bg-gray-200 rounded-lg`;
 const Header = () => {
+  let data = useSession();
   return (
     <header className="flex sticky top-0 shadow-md gap-2   items-center justify-between py-3 px-4">
       <div className="flex items-center gap-2">
@@ -69,7 +71,16 @@ const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <p className="text-lg font-semibold whitespace-pre-wrap">Sina P</p>
+        <p className="text-lg font-semibold whitespace-pre-wrap">
+          {data?.data?.user?.name}
+        </p>
+        <Image
+          className="rounded-full cursor-pointer"
+          onClick={signOut}
+          width={35}
+          height={35}
+          src={data?.data?.user?.image}
+        />
         <div className={optionBarIconStyles}>
           <ViewGridIcon className="h-4" />
         </div>

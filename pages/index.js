@@ -2,12 +2,16 @@ import React from "react";
 import Header from "@/components/Header";
 import { getSession, useSession } from "next-auth/react";
 import Login from "@/components/Login";
+import Sidebar from "@/components/sidebar/Sidebar";
 const index = () => {
   let { data: session } = useSession();
   if (!session) return <Login />;
   return (
     <div>
       <Header />
+      <div className="max-w-7xl mx-auto px-3 lg:px-0 flex ">
+        <Sidebar />
+      </div>
     </div>
   );
 };
