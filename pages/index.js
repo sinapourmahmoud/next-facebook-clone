@@ -8,7 +8,7 @@ const index = () => {
   let { data: session } = useSession();
   if (!session) return <Login />;
   return (
-    <div>
+    <div className="bg-gray-100 h-screen overflow-y-hidden">
       <Header />
       <div className="max-w-7xl mx-auto px-3 lg:px-0 flex ">
         <Sidebar />

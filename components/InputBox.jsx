@@ -8,7 +8,7 @@ const inputIcon =
 const InputBox = () => {
   let data = useSession();
   return (
-    <div className="bg-white shadow-lg py-3 px-2 flex flex-col gap-5 my-4 rounded-xl">
+    <div className="bg-white shadow-lg py-3 px-2 flex flex-col gap-3 my-4 rounded-xl">
       <form>
         <div className="w-full flex items-center gap-5">
           <Image
