@@ -3,14 +3,8 @@ import React, { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { EmojiHappyIcon } from "@heroicons/react/outline";
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid";
-import { db, storage } from "@/firebase";
-import {
-  collection,
-  addDoc,
-  updateDoc,
-  doc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { db } from "@/firebase";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import {
   getStorage,
   ref,
@@ -21,6 +15,7 @@ import {
 const inputIcon =
   "flex items-center gap-2 tranisation-all duration-200 hover:bg-gray-100 p-2 rounded-xl cursor-pointer";
 const InputBox = () => {
+  let [urlSrcImage, setUrlSrcImage] = useState(null);
   let [srcImage, setSrcImage] = useState(null);
   let fileLoader = useRef(null);
   let captionInput = useRef(null);
@@ -35,45 +30,49 @@ const InputBox = () => {
       postedBy: sessionData.data.user.name,
       email: sessionData.data.user.email,
       userImage: sessionData.data.user.image,
-      timestamp: serverTimestamp(),
     })
       .then((res) => {
         let postId = res.id;
-        const storage = getStorage();
-        const storageRef = ref(storage, postId);
+        if (srcImage) {
+          const storage = getStorage();
 
-        const uploadTask = uploadBytesResumable(storageRef, srcImage);
+          const storageRef = ref(storage, `posts/${postId}`);
 
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            switch (snapshot.state) {
-              case "paused":
-                break;
-              case "running":
-                break;
-            }
-          },
-          (error) => {
-            // Handle unsuccessful uploads
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              const docRef = doc(db, "posts", postId);
-              updateDoc(docRef, {
-                postImage: downloadURL,
-              })
-                .then((res) => {
-                  setSrcImage(null);
+          const uploadTask = uploadBytesResumable(storageRef, srcImage);
+
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              switch (snapshot.state) {
+                case "paused":
+                  break;
+                case "running":
+                  break;
+              }
+            },
+            (error) => {
+              // Handle unsuccessful uploads
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log(downloadURL);
+                const docRef = doc(db, "posts", postId);
+                updateDoc(docRef, {
+                  postImage: downloadURL,
                 })
-                .catch((err) => {
-                  alert(err.message);
-                });
-            });
-          }
-        );
+                  .then((res) => {
+                    setSrcImage(null);
+                    setUrlSrcImage(null);
+                  })
+                  .catch((err) => {
+                    alert(err.message);
+                  });
+              });
+            }
+          );
+        }
         captionInput.current.value = "";
       })
       .catch((err) => {
@@ -82,11 +81,13 @@ const InputBox = () => {
   };
   const addPhoto = (e) => {
     let render = new FileReader();
+    setSrcImage(e.target.files[0]);
     if (e.target.files[0]) {
       render.readAsDataURL(e.target.files[0]);
     }
     render.onload = function (e) {
-      setSrcImage(e.target.result);
+      console.log(e.target.result);
+      setUrlSrcImage(e.target.result);
     };
   };
   return (
@@ -107,13 +108,16 @@ const InputBox = () => {
             className="bg-gray-200 w-full h-19 rounded-md p-2 outline-none border-0 font-normal text-base"
             placeholder="Add your post Caption"
           />
-          {srcImage && (
+          {urlSrcImage && (
             <div
               className="flex flex-col cursor-pointer items-center"
-              onClick={() => setSrcImage(null)}
+              onClick={() => {
+                setUrlSrcImage(null);
+                setSrcImage(null);
+              }}
             >
               <img
-                src={srcImage}
+                src={urlSrcImage}
                 className="rounded-full object-cover w-8 h-8"
               />
               <span className="text-red-500 font-light text-sm">Remove</span>

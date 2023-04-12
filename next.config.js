@@ -7,6 +7,7 @@ const nextConfig = {
       "platform-lookaside.fbsbx.com",
       "firebasestorage.googleapis.com",
       "lh3.googleusercontent.com",
+      "firebasestorage.googleapis.com",
     ],
   },
 };
