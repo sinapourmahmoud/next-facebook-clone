@@ -3,12 +3,12 @@ import Header from "@/components/Header";
 import { getSession, useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Sidebar from "@/components/sidebar/Sidebar";
-import Feed from "@/components/Feed";
+import Feed from "@/components/Feed.jsx";
 const index = () => {
   let { data: session } = useSession();
   if (!session) return <Login />;
   return (
-    <div>
+    <div className="bg-gray-100 h-screen overflow-y-hidden">
       <Header />
       <div className="max-w-7xl mx-auto px-3 lg:px-0 flex ">
         <Sidebar />

@@ -3,7 +3,7 @@ import { stories } from "@/utils/data";
 import StoryDetail from "./StoryDetail";
 const Stories = () => {
   return (
-    <div className="flex gap-3  justify-center items-center">
+    <div className="flex   justify-between items-center">
       {stories.map((story) => (
         <StoryDetail
           name={story.name}
