@@ -7,9 +7,7 @@ const SidebarRow = ({ title, src, icon }) => {
         <Image src={src} width={30} height={30} className="rounded-full" />
       )}
       {icon ?? null}
-      <p className="text-base font-medium text-blue-500 hidden xl:inline">
-        {title}
-      </p>
+      <p className="text-base font-medium  hidden xl:inline">{title}</p>
     </div>
   );
 };

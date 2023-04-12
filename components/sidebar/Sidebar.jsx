@@ -17,7 +17,7 @@ const Sidebar = () => {
   let data = useSession();
   console.log(data);
   return (
-    <div className="max-w-[600px] mt-3 xl:min-w-[300px] flex flex-col gap-2">
+    <div className="max-w-[600px] mt-3 xl:min-w-[250px] flex flex-col gap-2">
       <SidebarRow
         title={data?.data?.user?.name}
         src={data?.data?.user?.image}
