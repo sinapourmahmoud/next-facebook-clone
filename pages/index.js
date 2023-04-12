@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import { getSession, useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Sidebar from "@/components/sidebar/Sidebar";
-import Feed from "@/components/Feed";
+import Feed from "@/components/Feed.jsx";
 const index = () => {
   let { data: session } = useSession();
   if (!session) return <Login />;
