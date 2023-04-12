@@ -1,10 +1,10 @@
 <h2>Facebook clone by Sina Pourmahmoud</h2>
 At the first try to :
-```bash
+
 npm install
 
-````
 I used :
+
 <ul>
 <li>Tailwind css</li>
 <li>Firebase</li>
@@ -22,7 +22,7 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
