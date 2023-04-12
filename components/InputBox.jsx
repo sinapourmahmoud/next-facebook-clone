@@ -63,7 +63,6 @@ const InputBox = () => {
             },
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log(downloadURL);
                 const docRef = doc(db, "posts", postId);
                 updateDoc(docRef, {
                   postImage: downloadURL,
@@ -92,7 +91,6 @@ const InputBox = () => {
       render.readAsDataURL(e.target.files[0]);
     }
     render.onload = function (e) {
-      console.log(e.target.result);
       setUrlSrcImage(e.target.result);
     };
   };
