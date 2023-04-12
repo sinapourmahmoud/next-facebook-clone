@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const StoryDetail = ({ src, name, profile }) => {
   return (
-    <div className="relative w- w-20 h-20 md:w-28 md:h-28 lg:h-52 lg:w-32   transition-all duration-300 cursor-pointer group hover:scale-105">
+    <div className="relative w- w-20 h-20 md:w-28 md:h-28 lg:h-52 lg:w-32   transition-all duration-300 cursor-pointer group hover:scale-105 shadow-sm">
       <Image
         className="absolute opacity-0 lg:opacity-100 rounded-full z-50 top-5 left-3"
         src={profile}
@@ -17,7 +17,7 @@ const StoryDetail = ({ src, name, profile }) => {
         src={src}
         alt={`image-${name}`}
         layout="fill"
-        className="w-full h-full rounded-full lg:rounded-3xl brightness-75 transition-all duration-300  group-hover:brightness-100"
+        className="w-full h-full rounded-full lg:rounded-3xl brightness-75 transition-all duration-300  group-hover:brightness-105"
       ></Image>
     </div>
   );
