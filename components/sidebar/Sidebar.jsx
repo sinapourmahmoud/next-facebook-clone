@@ -15,7 +15,6 @@ import SidebarRow from "./SidebarRow";
 
 const Sidebar = () => {
   let data = useSession();
-  console.log(data);
   return (
     <div className="max-w-[600px] mt-3 xl:min-w-[250px] flex flex-col gap-2">
       <SidebarRow

@@ -23,7 +23,7 @@ let optionBarIconStyles = `hidden md:flex items-center cursor-pointer justify-ce
 const Header = () => {
   let data = useSession();
   return (
-    <header className="flex sticky top-0 shadow-md gap-2   items-center justify-between py-3 px-4">
+    <header className="flex sticky top-0 shadow-md gap-2   items-center justify-between py-3 px-4 bg-white">
       <div className="flex items-center gap-2">
         <Image
           src="https://links.papareact.com/5me"
@@ -77,6 +77,7 @@ const Header = () => {
         <Image
           className="rounded-full cursor-pointer"
           onClick={signOut}
+          alt="profile"
           width={35}
           height={35}
           src={data?.data?.user?.image}
