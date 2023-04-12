@@ -1,7 +1,7 @@
 <h2>Facebook clone by Sina Pourmahmoud</h2>
 At the first try to :
 
-npm install
+<h1>npm install</h1>
 
 I used :
 
@@ -10,7 +10,6 @@ I used :
 <li>Firebase</li>
 <li>Next Auth</li>
 </ul>
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
