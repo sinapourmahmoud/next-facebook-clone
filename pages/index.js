@@ -4,9 +4,10 @@ import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Feed from "@/components/Feed.jsx";
+import Widgets from "@/components/Widgets.jsx";
 //firebase
 import { db } from "@/firebase";
-import { onSnapshot, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 const index = ({ posts }) => {
   let { data: session } = useSession();
   if (!session) return <Login />;
@@ -16,6 +17,7 @@ const index = ({ posts }) => {
       <div className="max-w-7xl mx-auto px-3 lg:px-0 flex ">
         <Sidebar />
         <Feed posts={posts} />
+        <Widgets />
       </div>
     </div>
   );
