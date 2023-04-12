@@ -5,11 +5,6 @@ export const stories = [
     profile: "https://links.papareact.com/kxk",
   },
   {
-    name: "Jeff Bezoz",
-    src: "https://links.papareact.com/k2j",
-    profile: "https://links.papareact.com/f0p",
-  },
-  {
     name: "Mark Zukerberg",
     src: "https://links.papareact.com/xql",
     profile: "https://links.papareact.com/snf",
@@ -21,7 +16,6 @@ export const stories = [
   },
 ];
 export const contacts = [
-  { src: "https://links.papareact.com/f0p", name: "Jeff Bezoz" },
   { src: "https://links.papareact.com/kxk", name: "Elon Musk" },
   { src: "https://links.papareact.com/zvy", name: "Bill Gates" },
   { src: "https://links.papareact.com/snf", name: "Mark Zukerberg" },
